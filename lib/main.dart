@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 
-/*
-  Scaffold - significa andaime em inglês
-*/
 void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Aplicativo Olá Mundo"),
-        ),
-        body:Center(
-          child: Text(
-              "Olá mundo",
-              style: TextStyle(fontSize: 20,color: Colors.black,
-              )
-          ),
-        ),
-      ),
-    ),
-  );
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        home: Scaffold(
+      appBar: AppBar(title: Text("Exemplo Scaffold")),
+      body: Center(child: Text("Meu aplicativo")),
+    ));
+  }
 }
