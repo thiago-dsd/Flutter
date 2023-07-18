@@ -16,18 +16,16 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Imagens"),
-        ),
-        body: Center(
-          child: Image.asset(
-            "assets/images/diamont.jpg",
-            fit: BoxFit.cover,
-            width: double.infinity,
-            height: double.infinity,
+          appBar: AppBar(
+            title: Text("Imagens"),
           ),
-        ),
-      ),
+          body: Image.network(
+              "https://img.freepik.com/fotos-gratis/beagles-filhotes-procurando-algo_1150-18193.jpg",
+              fit: BoxFit.fitWidth,
+              width: double.infinity,
+              height: double.infinity,
+              )
+          ),
     );
   }
 }
