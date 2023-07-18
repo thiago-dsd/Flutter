@@ -17,19 +17,19 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         home: Scaffold(
       appBar: AppBar(title: Text("Exemplo Scaffold")),
-      body: Row(
+      body: Column(
         //alinhamento  entre cada elemento no row
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        //crossAxisAlignment: CrossAxisAlignment.end,
+        //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Center(
-            child: Text("Meu aplicativo",
+            child: Text("Coluna 1",
               style: TextStyle(fontSize: 20),)),
           Center(
-            child: Text("Exemplo",
-              style: TextStyle(fontSize: 20),)),
+            child: Text("Coluna 2",
+              style: TextStyle(fontSize: 20, color: Colors.black26),)),
           Center(
-            child: Text("Exemplo2",
+            child: Text("Coluna 3",
               style: TextStyle(fontSize: 20),)),
         ],
       ),
