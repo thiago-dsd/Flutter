@@ -1,38 +1,29 @@
-import 'package:flutter/material.dart';
+import'dart:async';
+import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(MyApp());
-}
+void main(){
+  /* final uri = Uri.https("www.exempla.com", '/', {'q': 'flutter'}); */
+  final uri = Uri.https("www.exempla.com");
+  final future = http.get(uri);
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  print(uri);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
+  future.then((response){
+    if(response.statusCode == 200){
+      print("Página carregada com sucesso!");
+      print(response.body);
+    }
+    if(response.statusCode == 301){
+      print("Página movida permanentemente!");
+    }
+    if(response.statusCode == 404){
+      print("Página não encontrada!");
+    }
+    if(response.statusCode == 500){
+      print("Erro interno no servidor!");
+    }
+  });
 
-class _MyAppState extends State<MyApp> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Scaffold(
-      appBar: AppBar(title: Text("Exemplo Scaffold")),
-      body: Row(
-        //alinhamento  entre cada elemento no row
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        //crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          Center(
-            child: Text("Meu aplicativo",
-              style: TextStyle(fontSize: 20),)),
-          Center(
-            child: Text("Exemplo",
-              style: TextStyle(fontSize: 20),)),
-          Center(
-            child: Text("Exemplo2",
-              style: TextStyle(fontSize: 20),)),
-        ],
-      ),
-    ));
-  }
+  future.catchError((onError) => print("Erro!"));
+  future.whenComplete(() => print("Future completo!"));
 }
